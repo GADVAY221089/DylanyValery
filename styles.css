@@ -51,7 +51,7 @@ body {
   display: flex; flex-direction: column; align-items: center;
   gap: 10px; padding: 24px;
   text-align: center;
-  margin-top: -120px;
+  margin-top: -135px;
 }
 .splash-emojis { font-size: 36px; letter-spacing: 10px; animation: splashBounce 1.4s ease-in-out infinite; }
 @keyframes splashBounce {
