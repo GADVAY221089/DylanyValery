@@ -44,14 +44,53 @@ const CONFIG = {
   setInterval(tickSplash, 1000);
 })();
 
+/* ── CHISPAS ✨ AL TOCAR EL BOTÓN ── */
+function lanzarDestellos(origenEl) {
+  const rect = origenEl.getBoundingClientRect();
+  const cx = rect.left + rect.width / 2;
+  const cy = rect.top + rect.height / 2;
+  const simbolos = ['✨', '⭐', '💫', '🌟'];
+
+  for (let i = 0; i < 18; i++) {
+    const el = document.createElement('div');
+    el.className = 'sparkle-piece';
+    el.textContent = simbolos[Math.floor(Math.random() * simbolos.length)];
+
+    const angle = Math.random() * Math.PI * 2;
+    const dist  = 60 + Math.random() * 130;
+    const dx = Math.cos(angle) * dist;
+    const dy = Math.sin(angle) * dist;
+
+    el.style.cssText = `
+      left:${cx}px; top:${cy}px;
+      --dx:${dx}px; --dy:${dy}px;
+      font-size:${14 + Math.random() * 14}px;
+      animation-delay:${Math.random() * .15}s;
+    `;
+    document.body.appendChild(el);
+    setTimeout(() => el.remove(), 1100);
+  }
+}
+
 function entrarInvitacion() {
+  const btn = document.querySelector('.splash-btn');
+  const destello = document.getElementById('destello-flash');
+
+  // ✨ Efecto de brillo al tocar el botón
+  if (btn) {
+    btn.classList.add('tocado');
+    lanzarDestellos(btn);
+  }
+  if (destello) {
+    destello.classList.add('activo');
+  }
+
   // 🎵 Reproducir música de la fiesta
   const musica = document.getElementById('musica-fiesta');
   if (musica) {
     musica.volume = 0.6;
-    musica.play().catch(() => {
-      // Algunos navegadores bloquean el autoplay con sonido;
-      // si pasa, la música sonará en la primera interacción siguiente.
+    musica.play().catch((err) => {
+      console.error('No se pudo reproducir la música:', err);
     });
   }
 

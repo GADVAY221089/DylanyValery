@@ -109,6 +109,41 @@ body {
   50%      { box-shadow: 0 6px 0 rgba(0,0,0,.4), 0 14px 40px rgba(233,30,140,.7); }
 }
 
+/* ── DESTELLO AL TOCAR EL BOTÓN ── */
+#destello-flash {
+  position: fixed; inset: 0; z-index: 50; pointer-events: none;
+  background: radial-gradient(circle at 50% 78%, rgba(255,255,255,.95) 0%, rgba(249,199,79,.65) 22%, rgba(233,30,140,.25) 42%, transparent 65%);
+  opacity: 0;
+}
+#destello-flash.activo {
+  animation: destelloAnim .7s ease-out forwards;
+}
+@keyframes destelloAnim {
+  0%   { opacity: 0; transform: scale(.3); }
+  35%  { opacity: 1; transform: scale(1.05); }
+  100% { opacity: 0; transform: scale(1.7); }
+}
+
+.splash-btn.tocado {
+  animation: botonBrilloTocado .5s ease-out;
+}
+@keyframes botonBrilloTocado {
+  0%   { box-shadow: 0 6px 0 rgba(0,0,0,.4), 0 10px 30px rgba(233,30,140,.4), 0 0 0 rgba(255,255,255,0); }
+  40%  { box-shadow: 0 6px 0 rgba(0,0,0,.4), 0 10px 30px rgba(233,30,140,.4), 0 0 45px 22px rgba(255,255,255,.85); }
+  100% { box-shadow: 0 6px 0 rgba(0,0,0,.4), 0 10px 30px rgba(233,30,140,.4), 0 0 0 rgba(255,255,255,0); }
+}
+
+/* Chispas ✨ que estallan desde el botón */
+.sparkle-piece {
+  position: fixed; z-index: 60; pointer-events: none;
+  transform: translate(-50%, -50%);
+  animation: sparkleBurst .9s ease-out forwards;
+}
+@keyframes sparkleBurst {
+  0%   { transform: translate(-50%, -50%) scale(.3) rotate(0deg);   opacity: 1; }
+  100% { transform: translate(calc(-50% + var(--dx)), calc(-50% + var(--dy))) scale(1.3) rotate(180deg); opacity: 0; }
+}
+
 .particle {
   position: absolute;
   border-radius: 50%;
@@ -590,6 +625,24 @@ body {
 @keyframes btnGlowPurple {
   0%,100% { box-shadow: 0 4px 0 #3b0764, 0 6px 18px rgba(168,85,247,.4); }
   50%     { box-shadow: 0 4px 0 #3b0764, 0 8px 22px rgba(168,85,247,.6); }
+}
+
+/* ✨ Brillo deslizante que recorre los botones de acción */
+.abtn::after {
+  content: '';
+  position: absolute;
+  top: 0; left: -60%;
+  width: 40%; height: 100%;
+  background: linear-gradient(115deg, transparent 0%, rgba(255,255,255,.65) 50%, transparent 100%);
+  transform: skewX(-20deg);
+  pointer-events: none;
+}
+.abtn-confirm::after { animation: abtnShine 3s ease-in-out infinite; animation-delay: .3s; }
+.abtn-map::after     { animation: abtnShine 3s ease-in-out infinite; animation-delay: 1.8s; }
+@keyframes abtnShine {
+  0%   { left: -60%; }
+  35%  { left: 130%; }
+  100% { left: 130%; }
 }
 
 /* Footer */
