@@ -10,7 +10,7 @@ const CONFIG = {
   lugarNombre: "Salón de fiestas — Tegucigalpa",
   googleMapsUrl:"https://maps.google.com/?q=14.1134722,-87.2117222",
   // Número de WhatsApp donde llegarán las confirmaciones (código de país + número, sin + ni espacios)
-  whatsappNumero: "50433692861",
+  whatsappNumero: "50493293125",
   // Fecha y hora del evento (formato: año, mes-1, día, hora, minuto)
   fechaEvento: new Date(2026, 5, 28, 14, 0, 0)
 };
