@@ -238,23 +238,23 @@ function enviarConfirmacion() {
 
   lanzarConfetti();
 
-  // 📲 Cuenta regresiva 5-4-3-2-1 antes de enviar la confirmación por WhatsApp
-  const emoji_fiesta = "";
+  // 📲 Construir URL de WhatsApp
   let textoWhatsapp = "\u00a1Hola! Soy *" + nombre + "* y confirmo mi asistencia a la fiesta de Dylan y Valery";
   if (personas > 1) textoWhatsapp += ` Vamos ${personas} personas.`;
   if (mensaje)       textoWhatsapp += ` Mensaje: ${mensaje}`;
   const urlWhatsapp = `https://wa.me/${CONFIG.whatsappNumero}?text=${encodeURIComponent(textoWhatsapp)}`;
 
+  // 🎬 Cuenta regresiva decorativa — al terminar aparece el botón de WhatsApp
   let cuenta = 5;
   let cuentaActiva = true;
-  const cdEl = document.getElementById('wa-countdown');
+  const cdEl    = document.getElementById('wa-countdown');
+  const waNote  = document.getElementById('wa-note');
+  const btnWa   = document.getElementById('btn-whatsapp');
   const btnSabado = document.querySelector('#thanks-view .mabtn-confirm');
 
-  // 🔒 Ignorar clics durante la cuenta regresiva sin cambiar apariencia
   if (btnSabado) {
     btnSabado.onclick = (e) => { if (cuentaActiva) e.stopImmediatePropagation(); };
   }
-
   if (cdEl) {
     cdEl.textContent = cuenta;
     cdEl.classList.add('wa-cd-pulse');
@@ -272,8 +272,9 @@ function enviarConfirmacion() {
     } else {
       clearInterval(intervaloWa);
       cuentaActiva = false;
-      window.open(urlWhatsapp, '_blank');
-      // 🔓 Restaurar comportamiento normal del botón
+      // Ocultar nota y mostrar botón verde de WhatsApp
+      if (waNote) waNote.style.display = 'none';
+      if (btnWa)  { btnWa.href = urlWhatsapp; btnWa.style.display = 'block'; }
       if (btnSabado) btnSabado.onclick = () => cerrarModal();
     }
   }, 1000);
