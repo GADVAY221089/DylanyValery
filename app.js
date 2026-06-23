@@ -5,10 +5,10 @@
 // ── CONFIGURACIÓN ─────────────────────────────────────────────
 // ⚠️  Cambia estos datos antes de subir a GitHub Pages
 const CONFIG = {
-  lat:          14.0818,
-  lng:         -87.2068,
+  lat:          14.1134722,
+  lng:         -87.2117222,
   lugarNombre: "Salón de fiestas — Tegucigalpa",
-  googleMapsUrl:"https://maps.google.com/?q=14.0818,-87.2068",
+  googleMapsUrl:"https://maps.google.com/?q=14.1134722,-87.2117222",
   // Fecha y hora del evento (formato: año, mes-1, día, hora, minuto)
   fechaEvento: new Date(2026, 5, 28, 14, 0, 0)
 };
@@ -45,6 +45,16 @@ const CONFIG = {
 })();
 
 function entrarInvitacion() {
+  // 🎵 Reproducir música de la fiesta
+  const musica = document.getElementById('musica-fiesta');
+  if (musica) {
+    musica.volume = 0.6;
+    musica.play().catch(() => {
+      // Algunos navegadores bloquean el autoplay con sonido;
+      // si pasa, la música sonará en la primera interacción siguiente.
+    });
+  }
+
   const splash = document.getElementById('splash');
   splash.style.transition = 'opacity .5s ease';
   splash.style.opacity = '0';
