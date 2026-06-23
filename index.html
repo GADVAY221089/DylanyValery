@@ -86,7 +86,7 @@
     <div class="section-name-box roblox-namebox">
       <div class="section-tag">PLAYER 1 · PRÍNCIPE</div>
       <div class="section-name">Dylan Magdiel</div>
-      <div class="section-age">¡Level 7 desbloqueado! 🎮</div>
+      <div class="section-age">¡Level <span class="age-num rb-age-num">7</span> desbloqueado! 🎮</div>
     </div>
   </div>
 
@@ -145,7 +145,7 @@
     <div class="section-name-box kpop-namebox">
       <div class="section-tag kp-tag">IDOL ★ PRINCESSA</div>
       <div class="section-name kp-name">Valery Monserrat</div>
-      <div class="section-age kp-age">¡Brilla en sus 6! 🎤</div>
+      <div class="section-age kp-age">¡Brilla en sus <span class="age-num kp-age-num">6</span>! 🎤</div>
     </div>
   </div>
 
@@ -192,6 +192,9 @@
 <!-- ══ MODAL CONFIRMACIÓN ══ -->
 <div class="modal-overlay" id="modal">
   <div class="modal-box">
+    <div class="modal-deco md-1">🎈</div>
+    <div class="modal-deco md-2">🎊</div>
+    <div class="modal-deco md-3">✨</div>
     <button class="modal-close" onclick="cerrarModal()">✕</button>
 
     <div id="form-view">
@@ -208,7 +211,7 @@
       <textarea id="mensaje" class="minput mtextarea" placeholder="💬 Mensaje especial para los cumpleañeros... (opcional)"></textarea>
       <div class="modal-actions">
         <button class="mabtn mabtn-confirm" onclick="enviarConfirmacion()">🎊 ¡Voy a la fiesta!</button>
-        <button class="mabtn mabtn-cancel" onclick="cerrarModal()">Cancelar</button>
+        <button class="mabtn mabtn-cancel" onclick="cerrarModal()">✕ Cancelar</button>
       </div>
     </div>
 
@@ -217,6 +220,7 @@
         <div class="thanks-emoji" id="thanks-emoji">🥳</div>
         <div class="thanks-title">¡Confirmado!</div>
         <div class="thanks-msg" id="thanks-msg"></div>
+        <div class="thanks-wa-note">📲 Te enviaremos a WhatsApp en <span id="wa-countdown" class="wa-cd-num">3</span>...</div>
         <button class="mabtn mabtn-confirm" style="width:100%;margin-top:16px" onclick="cerrarModal()">¡Hasta el sábado! 🎂</button>
       </div>
     </div>

@@ -9,6 +9,8 @@ const CONFIG = {
   lng:         -87.2117222,
   lugarNombre: "Salón de fiestas — Tegucigalpa",
   googleMapsUrl:"https://maps.google.com/?q=14.1134722,-87.2117222",
+  // Número de WhatsApp donde llegarán las confirmaciones (código de país + número, sin + ni espacios)
+  whatsappNumero: "50433692861",
   // Fecha y hora del evento (formato: año, mes-1, día, hora, minuto)
   fechaEvento: new Date(2026, 5, 28, 14, 0, 0)
 };
@@ -170,6 +172,25 @@ function entrarInvitacion() {
   }
 })();
 
+/* ── CAPITALIZAR CADA PALABRA EN TIEMPO REAL ── */
+function capitalizarPalabras(input) {
+  const pos = input.selectionStart;
+  const val = input.value;
+  const nuevo = val.replace(/\S+/g, w => w.charAt(0).toUpperCase() + w.slice(1).toLowerCase());
+  if (input.value !== nuevo) {
+    input.value = nuevo;
+    input.setSelectionRange(pos, pos);
+  }
+}
+
+(function bindCapitalize() {
+  const ids = ['nombre', 'mensaje'];
+  ids.forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.addEventListener('input', () => capitalizarPalabras(el));
+  });
+})();
+
 /* ── MODAL ── */
 function abrirModal() {
   document.getElementById('modal').classList.add('open');
@@ -198,6 +219,7 @@ document.addEventListener('keydown', (e) => {
 function enviarConfirmacion() {
   const nombre   = document.getElementById('nombre').value.trim();
   const personas = parseInt(document.getElementById('personas').value || '1', 10);
+  const mensaje  = document.getElementById('mensaje').value.trim();
   const inputEl  = document.getElementById('nombre');
 
   if (!nombre) {
@@ -215,6 +237,46 @@ function enviarConfirmacion() {
   document.getElementById('thanks-view').style.display = 'block';
 
   lanzarConfetti();
+
+  // 📲 Cuenta regresiva 5-4-3-2-1 antes de enviar la confirmación por WhatsApp
+  const emoji_fiesta = "";
+  let textoWhatsapp = "\u00a1Hola! Soy *" + nombre + "* y confirmo mi asistencia a la fiesta de Dylan y Valery";
+  if (personas > 1) textoWhatsapp += ` Vamos ${personas} personas.`;
+  if (mensaje)       textoWhatsapp += ` Mensaje: ${mensaje}`;
+  const urlWhatsapp = `https://wa.me/${CONFIG.whatsappNumero}?text=${encodeURIComponent(textoWhatsapp)}`;
+
+  let cuenta = 5;
+  let cuentaActiva = true;
+  const cdEl = document.getElementById('wa-countdown');
+  const btnSabado = document.querySelector('#thanks-view .mabtn-confirm');
+
+  // 🔒 Ignorar clics durante la cuenta regresiva sin cambiar apariencia
+  if (btnSabado) {
+    btnSabado.onclick = (e) => { if (cuentaActiva) e.stopImmediatePropagation(); };
+  }
+
+  if (cdEl) {
+    cdEl.textContent = cuenta;
+    cdEl.classList.add('wa-cd-pulse');
+  }
+
+  const intervaloWa = setInterval(() => {
+    cuenta--;
+    if (cuenta > 0) {
+      if (cdEl) {
+        cdEl.textContent = cuenta;
+        cdEl.classList.remove('wa-cd-pulse');
+        void cdEl.offsetWidth;
+        cdEl.classList.add('wa-cd-pulse');
+      }
+    } else {
+      clearInterval(intervaloWa);
+      cuentaActiva = false;
+      window.open(urlWhatsapp, '_blank');
+      // 🔓 Restaurar comportamiento normal del botón
+      if (btnSabado) btnSabado.onclick = () => cerrarModal();
+    }
+  }, 1000);
 }
 
 /* ── ABRIR MAPA ── */
