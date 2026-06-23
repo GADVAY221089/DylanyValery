@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>¡Fiesta de Dylan y Valery Avila! 🎉</title>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- ══ SPLASH SCREEN ══ -->
+<div id="splash">
+  <div id="splash-particles"></div>
+
+  <div class="splash-scroll">
+
+  <div class="splash-content">
+    <div class="splash-emojis">🎂 🎮 🎤</div>
+    <div class="splash-title">🎂 FIESTA DE CUMPLEAÑOS 🎂</div>
+    <div class="splash-date">Domingo 28 · Junio 2026</div>
+    <div class="splash-time">⏰ 2:00 PM</div>
+    <div class="splash-countdown">
+      <div class="scd-unit"><span class="scd-num" id="scd-days">--</span><span class="scd-label">días</span></div>
+      <div class="scd-unit"><span class="scd-num" id="scd-hours">--</span><span class="scd-label">hrs</span></div>
+      <div class="scd-unit"><span class="scd-num" id="scd-mins">--</span><span class="scd-label">min</span></div>
+      <div class="scd-unit"><span class="scd-num" id="scd-secs">--</span><span class="scd-label">seg</span></div>
+    </div>
+    <button class="splash-btn" onclick="entrarInvitacion()">
+      <span class="splash-btn-icon">🎉</span>
+      <span>¡Toca aquí para ver la invitación!</span>
+    </button>
+  </div>
+
+  </div><!-- /splash-scroll -->
+</div>
+
+<!-- PARTÍCULAS FLOTANTES -->
+<div id="particles" style="display:none"></div>
+
+<!-- CARD PRINCIPAL -->
+<div class="card" id="main-card" style="display:none">
+
+  <!-- ══ SECCIÓN DYLAN / ROBLOX ══ -->
+  <div class="section roblox-section">
+    <div class="roblox-bg-pattern"></div>
+    <div class="roblox-poster-bg" style="background-image:url('dylan_poster.jpg')"></div>
+
+    <div class="roblox-logo">
+      <div class="rb-logo-box">
+        <span class="rb-r">R</span>
+        <div class="rb-logo-inner">
+          <div class="rb-pixel rb-p1"></div>
+          <div class="rb-pixel rb-p2"></div>
+          <div class="rb-pixel rb-p3"></div>
+          <div class="rb-pixel rb-p4"></div>
+        </div>
+        <span class="rb-text">OBLOX</span>
+      </div>
+    </div>
+
+    <div class="photo-frame rb-frame">
+      <div class="photo-frame-inner">
+        <img src="dylan.jpg" alt="Dylan" class="kid-photo" onerror="this.parentElement.classList.add('img-fallback')">
+        <div class="photo-fallback">🎮</div>
+      </div>
+      <div class="frame-corner fc-tl"></div>
+      <div class="frame-corner fc-tr"></div>
+      <div class="frame-corner fc-bl"></div>
+      <div class="frame-corner fc-br"></div>
+    </div>
+
+    <div class="rb-floating-icons">
+      <span class="rb-fi fi1">⚔️</span>
+      <span class="rb-fi fi2">🧱</span>
+      <span class="rb-fi fi3">🎮</span>
+      <span class="rb-fi fi4">💎</span>
+      <span class="rb-fi fi5">🏆</span>
+    </div>
+
+    <div class="section-name-box roblox-namebox">
+      <div class="section-tag">PLAYER 1 · PRÍNCIPE</div>
+      <div class="section-name">Dylan Magdiel</div>
+      <div class="section-age">¡Level 7 desbloqueado! 🎮</div>
+    </div>
+  </div>
+
+  <!-- ══ CENTRO / FECHA ══ -->
+  <div class="center-strip">
+    <div class="fire-left">🔥</div>
+    <div class="center-content">
+      <div class="vs-text">🎂 FIESTA DE CUMPLEAÑOS 🎂</div>
+      <div class="center-date">Domingo 28 · Junio 2026</div>
+      <div class="center-time">⏰ 2:00 PM</div>
+      <div class="countdown" id="countdown">
+        <div class="cd-unit"><span class="cd-num" id="cd-days">--</span><span class="cd-label">días</span></div>
+        <div class="cd-unit"><span class="cd-num" id="cd-hours">--</span><span class="cd-label">hrs</span></div>
+        <div class="cd-unit"><span class="cd-num" id="cd-mins">--</span><span class="cd-label">min</span></div>
+        <div class="cd-unit"><span class="cd-num" id="cd-secs">--</span><span class="cd-label">seg</span></div>
+      </div>
+    </div>
+    <div class="fire-right">🔥</div>
+  </div>
+
+  <!-- ══ SECCIÓN VALERY / K-POP ══ -->
+  <div class="section kpop-section">
+    <div class="kpop-bg-pattern"></div>
+    <div class="kpop-poster-bg" style="background-image:url('valery_poster.jpg')"></div>
+
+    <div class="kpop-logo">
+      <div class="kp-logo-box">
+        <span class="kp-k">K</span>
+        <span class="kp-dash">-</span>
+        <span class="kp-pop">POP</span>
+        <div class="kp-stars-deco">
+          <span>★</span><span>★</span><span>★</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="photo-frame kp-frame">
+      <div class="photo-frame-inner">
+        <img src="valery.jpg" alt="Valery" class="kid-photo" onerror="this.parentElement.classList.add('img-fallback')">
+        <div class="photo-fallback">🎤</div>
+      </div>
+      <div class="frame-corner fc-tl"></div>
+      <div class="frame-corner fc-tr"></div>
+      <div class="frame-corner fc-bl"></div>
+      <div class="frame-corner fc-br"></div>
+    </div>
+
+    <div class="kpop-floating">
+      <span class="kp-fi kfi1">🎵</span>
+      <span class="kp-fi kfi2">💜</span>
+      <span class="kp-fi kfi3">🌸</span>
+      <span class="kp-fi kfi4">✨</span>
+      <span class="kp-fi kfi5">🎤</span>
+    </div>
+
+    <div class="section-name-box kpop-namebox">
+      <div class="section-tag kp-tag">IDOL ★ PRINCESSA</div>
+      <div class="section-name kp-name">Valery Monserrat</div>
+      <div class="section-age kp-age">¡Brilla en sus 6! 🎤</div>
+    </div>
+  </div>
+
+  <!-- ══ CUERPO INVITE ══ -->
+  <div class="invite-body">
+
+    <div class="invite-banner">
+      <div class="banner-pixel-left">
+        <div class="px"></div><div class="px"></div><div class="px"></div><div class="px"></div>
+      </div>
+      <div class="banner-text">
+        <div class="banner-title">¡ESTÁS INVITADO!</div>
+        <div class="banner-sub">a la fiesta más épica del año</div>
+      </div>
+      <div class="banner-pixel-right">
+        <div class="px"></div><div class="px"></div><div class="px"></div><div class="px"></div>
+      </div>
+    </div>
+
+    <div class="invite-message">
+      Ven a celebrar con <strong class="rb-color">Dylan</strong> en su universo gamer
+      y con <strong class="kp-color">Valery</strong> en el escenario K-pop. 
+      ¡Habrá juegos, música, pastel y muchas sorpresas!
+    </div>
+
+    <div class="action-btns">
+      <button class="abtn abtn-confirm" onclick="abrirModal()">
+        <span class="abtn-icon">✅</span>
+        <span class="abtn-label">Confirmar<br><small>asistencia</small></span>
+      </button>
+      <button class="abtn abtn-map" onclick="abrirMapa()">
+        <span class="abtn-icon">🗺️</span>
+        <span class="abtn-label">Ver<br><small>ubicación</small></span>
+      </button>
+    </div>
+
+    <div class="invite-footer">
+      <span class="rb-color">🎮</span> Con amor — Familia Avila <span class="kp-color">🎤</span>
+    </div>
+  </div>
+
+</div><!-- /card -->
+
+<!-- ══ MODAL CONFIRMACIÓN ══ -->
+<div class="modal-overlay" id="modal">
+  <div class="modal-box">
+    <button class="modal-close" onclick="cerrarModal()">✕</button>
+
+    <div id="form-view">
+      <div class="modal-header">
+        <span class="mh-rb">🎮</span>
+        <div>
+          <div class="modal-title">¡Confirma tu asistencia!</div>
+          <div class="modal-sub">Dylan y Valery te esperan 💜</div>
+        </div>
+        <span class="mh-kp">🎤</span>
+      </div>
+      <input type="text" id="nombre" class="minput" placeholder="👤 Tu nombre completo" maxlength="60" autocomplete="off">
+      <input type="number" id="personas" class="minput" placeholder="👥 ¿Cuántas personas van?" min="1" max="30">
+      <textarea id="mensaje" class="minput mtextarea" placeholder="💬 Mensaje especial para los cumpleañeros... (opcional)"></textarea>
+      <div class="modal-actions">
+        <button class="mabtn mabtn-confirm" onclick="enviarConfirmacion()">🎊 ¡Voy a la fiesta!</button>
+        <button class="mabtn mabtn-cancel" onclick="cerrarModal()">Cancelar</button>
+      </div>
+    </div>
+
+    <div id="thanks-view" style="display:none">
+      <div class="thanks-content">
+        <div class="thanks-emoji" id="thanks-emoji">🥳</div>
+        <div class="thanks-title">¡Confirmado!</div>
+        <div class="thanks-msg" id="thanks-msg"></div>
+        <button class="mabtn mabtn-confirm" style="width:100%;margin-top:16px" onclick="cerrarModal()">¡Hasta el sábado! 🎂</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
