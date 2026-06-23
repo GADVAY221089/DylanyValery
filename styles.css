@@ -71,7 +71,8 @@ body {
 }
 .splash-time {
   font-family: 'Nunito', sans-serif; font-weight: 700;
-  font-size: 16px; color: rgba(255,255,255,.75);
+  font-size: clamp(12px, 3.5vw, 16px); color: rgba(255,255,255,.75);
+  white-space: nowrap;
 }
 .splash-countdown {
   display: flex; gap: 10px; margin: 4px 0;
@@ -84,7 +85,7 @@ body {
 }
 .scd-num {
   font-family: 'Fredoka One', sans-serif;
-  font-size: 28px; line-height: 1;
+  font-size: clamp(18px, 6vw, 28px); line-height: 1;
   background: linear-gradient(90deg, #e03030, #f9c74f, #e91e8c, #80b3ff, #22c55e, #e03030);
   background-size: 300% 100%;
   -webkit-background-clip: text;
@@ -317,8 +318,8 @@ body {
 .section-tag {
   display: inline-block;
   background: #ff5252; color: #fff;
-  font-size: 11px; font-weight: 900;
-  letter-spacing: 2px;
+  font-size: clamp(9px, 2.5vw, 11px); font-weight: 900;
+  letter-spacing: 2px; white-space: nowrap;
   padding: 3px 10px; border-radius: 3px;
   margin-bottom: 6px;
   box-shadow: 2px 2px 0 #7b0000;
@@ -328,12 +329,12 @@ body {
   font-size: clamp(26px, 8vw, 42px); color: #fff;
   line-height: 1; text-shadow: 3px 3px 0 #7b0000, 0 0 30px rgba(255,82,82,.5);
 }
-.section-age { font-size: 14px; color: #ffcccc; margin-top: 4px; font-weight: 700; }
+.section-age { font-size: clamp(11px, 3vw, 14px); color: #ffcccc; margin-top: 4px; font-weight: 700; white-space: nowrap; }
 
 /* ── NÚMEROS DE EDAD GRANDES ── */
 .age-num {
   font-family: 'Fredoka One', cursive;
-  font-size: 48px;
+  font-size: clamp(32px, 10vw, 48px);
   line-height: 1;
   display: inline-block;
   vertical-align: middle;
@@ -462,18 +463,20 @@ body {
   white-space: nowrap;
 }
 .center-date {
-  font-size: 18px; font-weight: 800; margin-top: 4px;
+  font-size: clamp(12px, 3.5vw, 18px); font-weight: 800; margin-top: 4px;
   background: linear-gradient(90deg, #f9c74f, #e91e8c, #80b3ff, #f9c74f);
   background-size: 300% 100%;
   -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
   animation: cdColorShift 4s linear infinite;
+  white-space: nowrap;
 }
 .center-time {
-  font-size: 16px; font-weight: 700; margin-top: 3px;
+  font-size: clamp(11px, 3vw, 16px); font-weight: 700; margin-top: 3px;
   background: linear-gradient(90deg, #80b3ff, #e91e8c, #f9c74f, #80b3ff);
   background-size: 300% 100%;
   -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
   animation: cdColorShift 3.5s linear infinite reverse;
+  white-space: nowrap;
 }
 
 /* ══ SECCIÓN K-POP ══ */
@@ -604,11 +607,11 @@ body {
   -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
   letter-spacing: 2px;
 }
-.banner-sub { font-size: 12px; color: rgba(255,255,255,.45); margin-top: 2px; }
+.banner-sub { font-size: clamp(10px, 2.5vw, 12px); color: rgba(255,255,255,.45); margin-top: 2px; white-space: nowrap; }
 
 /* Mensaje */
 .invite-message {
-  font-size: 14px; line-height: 1.6;
+  font-size: clamp(12px, 3.2vw, 14px); line-height: 1.6;
   color: rgba(255,255,255,.75);
   text-align: center; margin-bottom: 20px;
 }
@@ -659,8 +662,8 @@ body {
 .abtn:hover::before { opacity: 1; }
 .abtn:active { transform: scale(.95); }
 .abtn-icon { font-size: 22px; line-height: 1; filter: drop-shadow(0 2px 4px rgba(0,0,0,.25)); }
-.abtn-label { font-size: 12px; line-height: 1.15; letter-spacing: .3px; }
-.abtn-label small { display: block; font-size: 10px; font-weight: 700; opacity: .85; margin-top: 0; }
+.abtn-label { font-size: clamp(10px, 2.8vw, 12px); line-height: 1.15; letter-spacing: .3px; }
+.abtn-label small { display: block; font-size: clamp(9px, 2.3vw, 10px); font-weight: 700; opacity: .85; margin-top: 0; }
 
 .abtn-confirm {
   background: linear-gradient(160deg, #22c55e 0%, #16a34a 60%, #15803d 100%);
@@ -713,8 +716,8 @@ body {
 
 /* Footer */
 .invite-footer {
-  text-align: center; font-size: 13px; color: rgba(255,255,255,.35);
-  font-weight: 700;
+  text-align: center; font-size: clamp(11px, 3vw, 13px); color: rgba(255,255,255,.35);
+  font-weight: 700; white-space: nowrap;
 }
 
 /* ══ MODAL ══ */
